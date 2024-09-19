@@ -969,7 +969,11 @@
         // Check if the pill is inside any target and allow moving out
         if (isInsideTarget(movingRect, targetRect1)) {
           //   console.log("Pill is inside target area 1");
-          showDiv("tenthPage", "eleventhPage");
+
+          setTimeout(() => {
+            showDiv("tenthPage", "eleventhPage");
+          }, 500);
+
           messageDiv.textContent = "You have reached target area 1!";
         } else if (isInsideTarget(movingRect, targetRect2)) {
           //   console.log("Pill is inside target area 2");
