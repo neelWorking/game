@@ -801,7 +801,7 @@
               src="./images/unlockPop.svg"
               class="complete-svg"
               alt="complete-img"
-              onclick="PageCount += 1; showDiv(`eleventhPage`,`tenthPage`)"
+              onclick="PageCount += 1;if(PageCount==3){console.log(`completed`)} else {showDiv(`eleventhPage`,`tenthPage`)}"
             />
           </div>
           <div class="mask-body-div">
@@ -838,7 +838,7 @@
               src="./images/brainUnlockPop.svg"
               class="complete-svg"
               alt="complete-img"
-              onclick="PageCount += 1; showDiv(`twelthPage`,`tenthPage`) "
+              onclick="PageCount += 1;if(PageCount==3){console.log(`completed`)} else {showDiv(`twelthPage`,`tenthPage`)} "
             />
           </div>
           <div class="mask-body-div">
@@ -871,7 +871,7 @@
               src="./images/nervousUnlock.svg"
               class="complete-svg"
               alt="complete-img"
-              onclick="PageCount += 1; showDiv(`thirteenPage`,`tenthPage`)"
+              onclick="PageCount += 1; if(PageCount==3){console.log(`completed`)} else{ showDiv(`thirteenPage`,`tenthPage`)}"
             />
           </div>
           <div class="mask-body-div">
