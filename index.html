@@ -176,6 +176,7 @@
         background-repeat: repeat;
         background-position: top;
         position: relative;
+        height: 100vh;
       }
       .game-play-preson {
         height: 80vh;
@@ -286,6 +287,68 @@
         color: white;
         font-size: 16px;
         border-radius: 5px;
+      }
+      .arm-muscle {
+        height: 80vh;
+      }
+      .mask-body-div {
+        position: absolute;
+        right: 5%;
+        bottom: 35%;
+        height: 0; /* Start with 0 height */
+        width: 0; /* Start with 0 width */
+        display: flex;
+        justify-content: center;
+        align-items: start;
+        overflow: hidden;
+        border: 5px solid white;
+        border-radius: 50%;
+        animation: expandDiv 1.5s ease-out forwards; /* Apply animation */
+      }
+
+      /* Define the animation for .mask-body-div */
+      @keyframes expandDiv {
+        0% {
+          height: 0;
+          width: 0;
+        }
+        100% {
+          height: 340px;
+          width: 340px;
+        }
+      }
+
+      /* Mask message animation */
+      .mask-message {
+        position: absolute;
+        height: 0; /* Start with 0 height */
+        top: 5%;
+        right: 5%;
+        top: 10%;
+        opacity: 0; /* Start invisible */
+        animation: showMessage 1.5s ease-out 1.5s forwards; /* Delay of 1.5s, same as mask-body-div */
+      }
+
+      /* Define the animation for .mask-message */
+      @keyframes showMessage {
+        0% {
+          height: 0;
+          opacity: 0;
+        }
+        100% {
+          height: 200px;
+          opacity: 1;
+        }
+      }
+
+      .mask-body {
+        width: 150%;
+      }
+      .pointing-arrow {
+        position: absolute;
+        height: 230px;
+        top: 22%;
+        transform: rotate(-55deg);
       }
 
       @media (min-width: 320px) {
@@ -449,7 +512,7 @@
     <div class="">
       <!-- ------ DIV NUMBER ----- 1 -->
 
-      <div class="main-parent-div" id="firstPage">
+      <!-- <div class="main-parent-div" id="firstPage">
         <div class="div-no-1">
           <h1 class="start-text">Ready to see Bplex Forte in action?</h1>
           <img
@@ -458,11 +521,11 @@
             class="girl-saying-yes"
           />
         </div>
-      </div>
+      </div> -->
 
       <!-- ------ DIV NUMBER ----- 2 -->
 
-      <div class="hidden" id="secondPage">
+      <!-- <div class="hidden" id="secondPage">
         <div class="game-start-div">
           <img
             src="./images/handwithpills.svg"
@@ -481,11 +544,11 @@
             </button>
           </div>
         </div>
-      </div>
+      </div> -->
 
       <!-- ------ DIV NUMBER ----- 3 -->
 
-      <div class="hidden" id="thirdPage">
+      <!-- <div class="hidden" id="thirdPage">
         <div class="game-start-div" onclick="showDiv(`thirdPage`,`fourthPage`)">
           <img
             src="./images/handwithpills.svg"
@@ -499,11 +562,11 @@
           />
           <p class="tap-to-continue">Tap to continue</p>
         </div>
-      </div>
+      </div> -->
 
       <!-- ------ DIV NUMBER ----- 4 -->
 
-      <div class="hidden" id="fourthPage">
+      <!-- <div class="hidden" id="fourthPage">
         <div
           class="inside-human-div"
           onclick="showDiv(`fourthPage`,`fifthPage`),setInterval(updateImage, 1500);"
@@ -513,11 +576,11 @@
             <p class="">Tap to continue</p>
           </div>
         </div>
-      </div>
+      </div> -->
 
       <!-- ------ DIV NUMBER ----- 5 -->
 
-      <div class="hidden" id="fifthPage">
+      <!-- <div class="hidden" id="fifthPage">
         <div id="image-container" class="inside-human-div inside-pill">
           <div>
             <img
@@ -527,11 +590,11 @@
             />
           </div>
         </div>
-      </div>
+      </div> -->
 
       <!-- ------ DIV NUMBER ----- 6 -->
 
-      <div
+      <!-- <div
         class="hidden"
         id="sixthPage"
         onclick="showDiv(`sixthPage`,`seventhPage`),timerRun()"
@@ -544,11 +607,11 @@
           />
           <img src="./images/hand.gif" alt="hand-gif" class="hand-gif" />
         </div>
-      </div>
+      </div> -->
 
       <!-- ------ DIV NUMBER ----- 7 -->
 
-      <div class="hidden" id="seventhPage">
+      <!-- <div class="hidden" id="seventhPage">
         <div class="inside-human-div game-play-bg-div">
           <div class="person-center-div pill">
             <div class="timer" id="timer">00:00</div>
@@ -561,11 +624,11 @@
             <p class="tap-to-continue">It takes 15-30 mins to get effective</p>
           </div>
         </div>
-      </div>
+      </div> -->
 
       <!-- ------ DIV NUMBER ----- 8 -->
 
-      <div class="hidden" id="eightPage">
+      <!-- <div class="hidden" id="eightPage">
         <div
           class="inside-human-div game-play-bg-div"
           onclick="showDiv(`eightPage`,`ninthPage`)"
@@ -586,11 +649,11 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
 
       <!-- ------ DIV NUMBER ----- 9 -->
 
-      <div id="ninthPage" class="hidden">
+      <!-- <div id="ninthPage" class="hidden">
         <div class="inside-human-div game-play-bg-div">
           <div class="person-center-div pill">
             <img
@@ -637,11 +700,11 @@
             <p class="tap-to-continue hidden">Click on the glowing pill</p>
           </div>
         </div>
-      </div>
+      </div> -->
 
       <!-- ------ DIV NUMBER ----- 10 -->
 
-      <div id="tenthPage" class="hidden">
+      <!-- <div id="tenthPage" class="hidden">
         <div class="inside-human-div game-play-bg-div">
           <div class="person-center-div pill">
             <img
@@ -668,9 +731,36 @@
           <div id="target-area-3"></div>
           <div id="message" class="">You have reached the target area!</div>
         </div>
-      </div>
+      </div> -->
 
       <!-- ------ DIV NUMBER ----- 11 -->
+
+      <div>
+        <div class="person-center-div">
+          <img
+            src="./images/arm-muscle.svg"
+            alt="arm-muscle"
+            class="arm-muscle"
+          />
+          <img
+            src="./images/pointingArrow.gif"
+            alt="pointing-arrow"
+            class="pointing-arrow"
+          />
+          <img
+            src="./images/maskMessage.png"
+            alt="mask-message"
+            class="mask-message"
+          />
+          <div class="mask-body-div">
+            <img
+              src="./images/maskBody.png"
+              alt="mask-body"
+              class="mask-body"
+            />
+          </div>
+        </div>
+      </div>
     </div>
     <script>
       const imagePaths = [
