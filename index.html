@@ -801,7 +801,7 @@
               src="./images/unlockPop.svg"
               class="complete-svg"
               alt="complete-img"
-              onclick="showDiv(`eleventhPage`,`tenthPage`)"
+              onclick="PageCount += 1; showDiv(`eleventhPage`,`tenthPage`)"
             />
           </div>
           <div class="mask-body-div">
@@ -838,7 +838,7 @@
               src="./images/brainUnlockPop.svg"
               class="complete-svg"
               alt="complete-img"
-              onclick="showDiv(`twelthPage`,`tenthPage`)"
+              onclick="PageCount += 1; showDiv(`twelthPage`,`tenthPage`) "
             />
           </div>
           <div class="mask-body-div">
@@ -871,7 +871,7 @@
               src="./images/nervousUnlock.svg"
               class="complete-svg"
               alt="complete-img"
-              onclick="showDiv(`thirteenPage`,`tenthPage`)"
+              onclick="PageCount += 1; showDiv(`thirteenPage`,`tenthPage`)"
             />
           </div>
           <div class="mask-body-div">
@@ -936,7 +936,7 @@
           }
         }
       }
-
+      let PageCount = 0;
       let minutes = 0;
       let seconds = 0;
       let intervalId;
@@ -1059,6 +1059,7 @@
           messageDiv.textContent = "You have reached target area 1!";
         } else if (isInsideTarget(movingRect, targetRect2)) {
           //   console.log("Pill is inside target area 2");
+
           setTimeout(() => {
             showDiv("tenthPage", "twelthPage");
           }, 500);
@@ -1066,6 +1067,7 @@
           messageDiv.textContent = "You have reached target area 2!";
         } else if (isInsideTarget(movingRect, targetRect3)) {
           //   console.log("Pill is inside target area 3");
+
           setTimeout(() => {
             showDiv("tenthPage", "thirteenPage");
           }, 500);
