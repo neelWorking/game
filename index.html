@@ -1052,27 +1052,27 @@
 
         // Check if the pill is inside any target and allow moving out
         if (isInsideTarget(movingRect, targetRect1)) {
-          //   console.log("Pill is inside target area 1");
+          console.log("Pill is inside target area 1");
 
           setTimeout(() => {
             showDiv("tenthPage", "eleventhPage");
-          }, 500);
+          }, 100);
 
           messageDiv.textContent = "You have reached target area 1!";
         } else if (isInsideTarget(movingRect, targetRect2)) {
-          //   console.log("Pill is inside target area 2");
+          console.log("Pill is inside target area 2");
 
           setTimeout(() => {
             showDiv("tenthPage", "twelthPage");
-          }, 500);
+          }, 100);
 
           messageDiv.textContent = "You have reached target area 2!";
         } else if (isInsideTarget(movingRect, targetRect3)) {
-          //   console.log("Pill is inside target area 3");
+          console.log("Pill is inside target area 3");
 
           setTimeout(() => {
             showDiv("tenthPage", "thirteenPage");
-          }, 500);
+          }, 100);
 
           messageDiv.textContent = "You have reached target area 3!";
         } else {
@@ -1110,7 +1110,7 @@
       function exploreMore(first, second) {
         PageCount += 1;
         resetPillPosition();
-        if (PageCount > 3) {
+        if (PageCount >= 3) {
           console.log(`completed`);
         } else {
           showDiv(first, second);
