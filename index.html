@@ -255,8 +255,8 @@
         position: absolute;
         top: 25vh;
         left: 35vw;
-        width: 12vw;
-        height: 12vw;
+        width: 14vw;
+        height: 15vw;
         z-index: 30;
         /* border: 4px dashed red; */
       }
@@ -264,8 +264,8 @@
         position: absolute;
         top: 12vh;
         /* left: 35vw; */
-        width: 12vw;
-        height: 12vw;
+        width: 13vw;
+        height: 13vw;
         z-index: 30;
         /* border: 4px dashed green; */
       }
@@ -273,8 +273,8 @@
         position: absolute;
         top: 25vh;
         right: 30vw;
-        width: 13vw;
-        height: 30vw;
+        width: 14vw;
+        height: 31vw;
         z-index: 30;
         /* border: 4px dashed blue; */
       }
@@ -1095,12 +1095,12 @@
       }
 
       // Helper function to check if the moving div is inside a target area
-      function isInsideTarget(movingRect, targetRect) {
+      function isInsideTarget(movingRect, targetRect, margin = 5) {
         return (
-          movingRect.left >= targetRect.left &&
-          movingRect.right <= targetRect.right &&
-          movingRect.top >= targetRect.top &&
-          movingRect.bottom <= targetRect.bottom
+          movingRect.left >= targetRect.left + margin &&
+          movingRect.right <= targetRect.right - margin &&
+          movingRect.top >= targetRect.top + margin &&
+          movingRect.bottom <= targetRect.bottom - margin
         );
       }
 
