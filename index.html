@@ -761,6 +761,7 @@
               alt="game-body"
               id="game-area"
               class="game-play-preson"
+              onclick="resetPillPosition()"
             />
             <img
               src="./images/pill.png"
@@ -801,7 +802,7 @@
               src="./images/unlockPop.svg"
               class="complete-svg"
               alt="complete-img"
-              onclick="PageCount += 1;if(PageCount==3){console.log(`completed`)} else {showDiv(`eleventhPage`,`tenthPage`)}"
+              onclick="PageCount += 1; resetPillPosition();if(PageCount==3){console.log(`completed`)} else {showDiv(`eleventhPage`,`tenthPage`)}"
             />
           </div>
           <div class="mask-body-div">
@@ -838,7 +839,7 @@
               src="./images/brainUnlockPop.svg"
               class="complete-svg"
               alt="complete-img"
-              onclick="PageCount += 1;if(PageCount==3){console.log(`completed`)} else {showDiv(`twelthPage`,`tenthPage`)} "
+              onclick="PageCount += 1; resetPillPosition(); if(PageCount==3){console.log(`completed`)} else {showDiv(`twelthPage`,`tenthPage`)} "
             />
           </div>
           <div class="mask-body-div">
@@ -871,7 +872,7 @@
               src="./images/nervousUnlock.svg"
               class="complete-svg"
               alt="complete-img"
-              onclick="PageCount += 1; if(PageCount==3){console.log(`completed`)} else{ showDiv(`thirteenPage`,`tenthPage`)}"
+              onclick="PageCount += 1; resetPillPosition(); if(PageCount==3){console.log(`completed`)} else{ showDiv(`thirteenPage`,`tenthPage`)}"
             />
           </div>
           <div class="mask-body-div">
@@ -1099,6 +1100,12 @@
         const touch = e.touches[0];
         startDrag(touch.clientX, touch.clientY);
       });
+      let initialPosition = { left: 45, top: 40 };
+      function resetPillPosition() {
+        console.log("Resetting pill to initial position:", initialPosition);
+        movingDiv.style.left = `${initialPosition.left}%`;
+        movingDiv.style.top = `${initialPosition.top}%`;
+      }
     </script>
   </body>
 </html>
