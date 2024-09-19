@@ -73,7 +73,7 @@
       }
       .start-title-btn {
         position: absolute;
-        font-size: 24px;
+        font-size: 26px;
         padding: 25px;
         bottom: 10%;
       }
@@ -96,13 +96,26 @@
       }
       .tap-to-continue {
         position: absolute;
-        bottom: 10px; /* Adjusts the distance from the bottom */
+        bottom: 10px; /* Distance from the bottom */
         left: 50%;
         transform: translateX(-50%);
         font-size: 24px;
         text-align: center;
         width: 100vw;
+        opacity: 0; /* Start with an invisible text */
+        animation: fade 1.5s infinite; /* Apply the fade animation */
       }
+
+      @keyframes fade {
+        0%,
+        100% {
+          opacity: 0; /* Invisible at the start and end */
+        }
+        50% {
+          opacity: 1; /* Fully visible in the middle */
+        }
+      }
+
       .inside-human-div {
         height: 100vh;
         background-color: rgba(219, 234, 254, 1);
@@ -520,11 +533,11 @@
       }
       .hand-with-pill {
         left: -200px;
-        animation: moveFromLeft 2s forwards;
+        animation: moveFromLeft 2s ease-in-out forwards;
       }
       .hand-with-glass {
-        right: -200px;
-        animation: moveFromRight 2s forwards;
+        right: -350px;
+        animation: moveFromRight 2s ease-in-out forwards;
       }
 
       @keyframes moveFromLeft {
@@ -626,7 +639,7 @@
         >
           <div class="body-pill-div">
             <img src="./images/BodyForPill.gif" alt="pill" class="pill" />
-            <p class="">Tap to continue</p>
+            <p class="tap-to-continue">Tap to continue</p>
           </div>
         </div>
       </div>
@@ -777,12 +790,13 @@
               id="moving-div"
               class="dragging-pill"
             />
+            <p class="tap-to-continue">
+              Drag the pill to highlighted body parts
+            </p>
           </div>
-          <p class="tap-to-continue">Drag the glowing pill</p>
           <div id="target-area-1"></div>
           <div id="target-area-2"></div>
           <div id="target-area-3"></div>
-          <div id="message" class="">You have reached the target area!</div>
         </div>
       </div>
 
@@ -824,7 +838,7 @@
 
       <!-- ------ DIV NUMBER ----- 12 -->
 
-      <div class="hidden">
+      <div class="hidden" id="twelfth">
         <div class="person-center-div">
           <img
             src="./images/bodyWithBrain.svg"
@@ -846,6 +860,7 @@
               src="./images/brainUnlockPop.svg"
               class="complete-svg"
               alt="complete-img"
+              onclick="exploreMore(`twelfth`,`tenthPage`)"
             />
           </div>
           <div class="mask-body-div">
@@ -939,7 +954,7 @@
         currentIndex = (currentIndex + 1) % imagePaths.length;
         imgElement.src = imagePaths[currentIndex];
         if (currentIndex == imagePaths.length - 1) {
-          //   console.log("Image updated");
+          console.log("Image updated");
           if (isFifthPageActive()) {
             setTimeout(() => {
               showDiv("fifthPage", "sixthPage");
@@ -986,7 +1001,7 @@
 
       // Helper function to start dragging
       function startDrag(x, y) {
-        // console.log("Drag started at:", { x, y });
+        console.log("Drag started at:", { x, y });
         offsetX = x - movingDiv.offsetLeft;
         offsetY = y - movingDiv.offsetTop;
         isDragging = true;
@@ -1001,7 +1016,7 @@
         if (!isDragging) return;
         const x = e.clientX;
         const y = e.clientY;
-        // console.log("Mouse moved to:", { x, y });
+        console.log("Mouse moved to:", { x, y });
         moveDiv(x, y);
       }
 
@@ -1010,7 +1025,7 @@
         const touch = e.touches[0];
         const x = touch.clientX;
         const y = touch.clientY;
-        // console.log("Touch moved to:", { x, y });
+        console.log("Touch moved to:", { x, y });
         moveDiv(x, y);
       }
 
@@ -1019,7 +1034,7 @@
         const newY = y - offsetY;
 
         // Log new coordinates of the pill
-        // console.log("Moving pill to:", { newX, newY });
+        console.log("Moving pill to:", { newX, newY });
 
         // Update the position of the pill
         movingDiv.style.left = `${newX}px`;
@@ -1030,13 +1045,13 @@
       }
 
       function onMouseUp() {
-        // console.log("Mouse released");
+        console.log("Mouse released");
         isDragging = false;
         cleanupListeners();
       }
 
       function onTouchEnd() {
-        // console.log("Touch released");
+        console.log("Touch released");
         isDragging = false;
         cleanupListeners();
       }
@@ -1057,21 +1072,42 @@
         const targetRect2 = targetArea2.getBoundingClientRect();
         const targetRect3 = targetArea3.getBoundingClientRect();
 
-        // console.log("Moving Div Area:", movingRect);
+        console.log("Moving Div Area:", movingRect);
 
         // Check if the pill is inside any target and allow moving out
         if (isInsideTarget(movingRect, targetRect1)) {
-          //   console.log("Pill is inside target area 1");
-          messageDiv.textContent = "You have reached target area 1!";
+          console.log("Pill is inside target area 1");
+
+          setTimeout(() => {
+            showDiv("tenthPage", "eleventhPage");
+            showDiv("tenthPage", "thirteenPage");
+            showDiv("tenthPage", "twelfthPage");
+          }, 100);
+
+          // messageDiv.textContent = "You have reached target area 1!";
         } else if (isInsideTarget(movingRect, targetRect2)) {
-          //   console.log("Pill is inside target area 2");
-          messageDiv.textContent = "You have reached target area 2!";
+          console.log("Pill is inside target area 2");
+
+          setTimeout(() => {
+            showDiv("tenthPage", "eleventhPage");
+            showDiv("tenthPage", "thirteenPage");
+            showDiv("tenthPage", "twelfthPage");
+          }, 100);
+
+          // messageDiv.textContent = "You have reached target area 2!";
         } else if (isInsideTarget(movingRect, targetRect3)) {
-          //   console.log("Pill is inside target area 3");
-          messageDiv.textContent = "You have reached target area 3!";
+          console.log("Pill is inside target area 3");
+
+          setTimeout(() => {
+            showDiv("tenthPage", "eleventhPage");
+            showDiv("tenthPage", "thirteenPage");
+            showDiv("tenthPage", "twelfthPage");
+          }, 100);
+
+          // messageDiv.textContent = "You have reached target area 3!";
         } else {
           //   console.log("Pill is outside all target areas");
-          messageDiv.textContent = "Drag the glowing pill";
+          // messageDiv.textContent = "Drag the glowing pill";
         }
       }
 
@@ -1095,6 +1131,21 @@
         const touch = e.touches[0];
         startDrag(touch.clientX, touch.clientY);
       });
+      let initialPosition = { left: 45, top: 40 };
+      function resetPillPosition() {
+        console.log("Resetting pill to initial position:", initialPosition);
+        movingDiv.style.left = `${initialPosition.left}%`;
+        movingDiv.style.top = `${initialPosition.top}%`;
+      }
+      function exploreMore(first, second) {
+        PageCount += 1;
+        resetPillPosition();
+        if (PageCount >= 3) {
+          console.log(`completed`);
+        } else {
+          showDiv(first, second);
+        }
+      }
     </script>
   </body>
 </html>
