@@ -765,7 +765,7 @@
 
       <!-- ------ DIV NUMBER ----- 11 -->
 
-      <div class="hidden">
+      <div class="hidden" id="eleventhPage">
         <div class="person-center-div">
           <img
             src="./images/arm-muscle.svg"
@@ -969,6 +969,7 @@
         // Check if the pill is inside any target and allow moving out
         if (isInsideTarget(movingRect, targetRect1)) {
           //   console.log("Pill is inside target area 1");
+          showDiv("tenthPage", "eleventhPage");
           messageDiv.textContent = "You have reached target area 1!";
         } else if (isInsideTarget(movingRect, targetRect2)) {
           //   console.log("Pill is inside target area 2");
