@@ -770,6 +770,7 @@
               alt="game-body"
               id="game-area"
               class="game-play-preson"
+              onclick="resetPillPosition()"
             />
             <img
               src="./images/pill.png"
@@ -788,7 +789,7 @@
 
       <!-- ------ DIV NUMBER ----- 11 -->
 
-      <div class="hidden">
+      <div class="hidden" id="eleventhPage">
         <div class="person-center-div">
           <img
             src="./images/arm-muscle.svg"
@@ -810,6 +811,7 @@
               src="./images/unlockPop.svg"
               class="complete-svg"
               alt="complete-img"
+              onclick="exploreMore(`eleventhPage`,`tenthPage`)"
             />
           </div>
           <div class="mask-body-div">
@@ -824,7 +826,7 @@
 
       <!-- ------ DIV NUMBER ----- 12 -->
 
-      <div class="hidden">
+      <div class="hidden" id="twelthPage">
         <div class="person-center-div">
           <img
             src="./images/bodyWithBrain.svg"
@@ -846,6 +848,7 @@
               src="./images/brainUnlockPop.svg"
               class="complete-svg"
               alt="complete-img"
+              onclick="exploreMore(`twelthPage`,`tenthPage`)"
             />
           </div>
           <div class="mask-body-div">
@@ -856,7 +859,7 @@
 
       <!-- ------ DIV NUMBER ----- 13 -->
 
-      <div class="hidden">
+      <div class="hidden" id="thirteenPage">
         <div class="person-center-div">
           <img
             src="./images/nervousBody.svg"
@@ -878,6 +881,7 @@
               src="./images/nervousUnlock.svg"
               class="complete-svg"
               alt="complete-img"
+              onclick="exploreMore(`thirteenPage`,`tenthPage`)"
             />
           </div>
           <div class="mask-body-div">
@@ -947,7 +951,7 @@
           }
         }
       }
-
+      let PageCount = 0;
       let minutes = 0;
       let seconds = 0;
       let intervalId;
@@ -1061,13 +1065,28 @@
 
         // Check if the pill is inside any target and allow moving out
         if (isInsideTarget(movingRect, targetRect1)) {
-          //   console.log("Pill is inside target area 1");
+          console.log("Pill is inside target area 1");
+
+          setTimeout(() => {
+            showDiv("tenthPage", "eleventhPage");
+          }, 100);
+
           messageDiv.textContent = "You have reached target area 1!";
         } else if (isInsideTarget(movingRect, targetRect2)) {
-          //   console.log("Pill is inside target area 2");
+          console.log("Pill is inside target area 2");
+
+          setTimeout(() => {
+            showDiv("tenthPage", "twelthPage");
+          }, 100);
+
           messageDiv.textContent = "You have reached target area 2!";
         } else if (isInsideTarget(movingRect, targetRect3)) {
-          //   console.log("Pill is inside target area 3");
+          console.log("Pill is inside target area 3");
+
+          setTimeout(() => {
+            showDiv("tenthPage", "thirteenPage");
+          }, 100);
+
           messageDiv.textContent = "You have reached target area 3!";
         } else {
           //   console.log("Pill is outside all target areas");
@@ -1095,6 +1114,21 @@
         const touch = e.touches[0];
         startDrag(touch.clientX, touch.clientY);
       });
+      let initialPosition = { left: 45, top: 40 };
+      function resetPillPosition() {
+        console.log("Resetting pill to initial position:", initialPosition);
+        movingDiv.style.left = `${initialPosition.left}%`;
+        movingDiv.style.top = `${initialPosition.top}%`;
+      }
+      function exploreMore(first, second) {
+        PageCount += 1;
+        resetPillPosition();
+        if (PageCount >= 3) {
+          console.log(`completed`);
+        } else {
+          showDiv(first, second);
+        }
+      }
     </script>
   </body>
 </html>
