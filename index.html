@@ -45,7 +45,7 @@
       }
       .girl-saying-yes {
         position: absolute;
-        bottom: -40px;
+        bottom: -10px;
         left: 50%;
         transform: translateX(-50%);
         width: 50%;
@@ -354,6 +354,20 @@
         top: 22%;
         transform: rotate(-55deg);
       }
+      .body-pointing-arrow {
+        position: absolute;
+        height: 250px;
+        right: 26%;
+        top: 15%;
+        transform: rotate(-26deg);
+      }
+      .nervous-pointing-arrow {
+        position: absolute;
+        height: 250px;
+        right: 26%;
+        top: 16%;
+        transform: rotate(-40deg);
+      }
 
       .complete-img-popup-2 {
         height: 100vh;
@@ -388,7 +402,7 @@
       @media (min-width: 768px) {
         .girl-saying-yes {
           max-width: 60%;
-          bottom: -50px;
+          bottom: -10px;
         }
         .hand-with-pill2 {
           height: 500px;
@@ -454,7 +468,7 @@
       @media (min-width: 1024px) {
         .girl-saying-yes {
           max-width: 35%;
-          bottom: -70px;
+          bottom: -50px;
         }
         .hand-with-pill2 {
           height: 550px;
@@ -546,7 +560,7 @@
         <div class="div-no-1">
           <h1 class="start-text">Ready to see Bplex Forte in action?</h1>
           <img
-            src="./images/girl-image.gif"
+            src="./images/girl.gif"
             alt="girl-image"
             class="girl-saying-yes"
           />
@@ -784,16 +798,11 @@
           />
           <div class="complete-img-popup-2">
             <img
-              src="./images/complete.svg"
+              src="./images/unlockPop.svg"
               class="complete-svg"
               alt="complete-img"
-            />
-            <p
-              class="tap-to-continue"
               onclick="showDiv(`eleventhPage`,`tenthPage`)"
-            >
-              Tap here to continue
-            </p>
+            />
           </div>
           <div class="mask-body-div">
             <img
@@ -804,6 +813,74 @@
           </div>
         </div>
       </div>
+
+      <!-- ------ DIV NUMBER ----- 12 -->
+
+      <div class="hidden" id="twelthPage">
+        <div class="person-center-div">
+          <img
+            src="./images/bodyWithBrain.svg"
+            alt="arm-muscle"
+            class="arm-muscle"
+          />
+          <img
+            src="./images/pointingArrow.gif"
+            alt="pointing-arrow"
+            class="body-pointing-arrow"
+          />
+          <img
+            src="./images/brainMessage.png"
+            alt="mask-message"
+            class="mask-message"
+          />
+          <div class="complete-img-popup-2">
+            <img
+              src="./images/brainUnlockPop.svg"
+              class="complete-svg"
+              alt="complete-img"
+              onclick="showDiv(`twelthPage`,`tenthPage`)"
+            />
+          </div>
+          <div class="mask-body-div">
+            <img src="./images/brain.png" alt="mask-body" class="mask-body" />
+          </div>
+        </div>
+      </div>
+
+      <!-- ------ DIV NUMBER ----- 13 -->
+
+      <div class="hidden" id="thirteenPage">
+        <div class="person-center-div">
+          <img
+            src="./images/nervousBody.svg"
+            alt="arm-muscle"
+            class="arm-muscle"
+          />
+          <img
+            src="./images/pointingArrow.gif"
+            alt="pointing-arrow"
+            class="nervous-pointing-arrow"
+          />
+          <img
+            src="./images/nervousMessage.svg"
+            alt="mask-message"
+            class="mask-message"
+          />
+          <div class="complete-img-popup-2">
+            <img
+              src="./images/nervousUnlock.svg"
+              class="complete-svg"
+              alt="complete-img"
+              onclick="showDiv(`thirteenPage`,`tenthPage`)"
+            />
+          </div>
+          <div class="mask-body-div">
+            <img src="./images/nervous.svg" alt="mask-body" class="mask-body" />
+          </div>
+        </div>
+      </div>
+
+      <!-- ------ DIV NUMBER ----- 11 -->
     </div>
     <script>
       const imagePaths = [
@@ -982,9 +1059,17 @@
           messageDiv.textContent = "You have reached target area 1!";
         } else if (isInsideTarget(movingRect, targetRect2)) {
           //   console.log("Pill is inside target area 2");
+          setTimeout(() => {
+            showDiv("tenthPage", "twelthPage");
+          }, 500);
+
           messageDiv.textContent = "You have reached target area 2!";
         } else if (isInsideTarget(movingRect, targetRect3)) {
           //   console.log("Pill is inside target area 3");
+          setTimeout(() => {
+            showDiv("tenthPage", "thirteenPage");
+          }, 500);
+
           messageDiv.textContent = "You have reached target area 3!";
         } else {
           //   console.log("Pill is outside all target areas");
