@@ -803,7 +803,7 @@
               src="./images/unlockPop.svg"
               class="complete-svg"
               alt="complete-img"
-              onclick="PageCount += 1; resetPillPosition();if(PageCount>3){console.log(`completed`)} else {showDiv(`eleventhPage`,`tenthPage`)}"
+              onclick="exploreMore(`eleventhPage`,`tenthPage`)"
             />
           </div>
           <div class="mask-body-div">
@@ -840,7 +840,7 @@
               src="./images/brainUnlockPop.svg"
               class="complete-svg"
               alt="complete-img"
-              onclick="PageCount += 1; resetPillPosition(); if(PageCount>3){console.log(`completed`)} else {showDiv(`twelthPage`,`tenthPage`)} "
+              onclick="exploreMore(`twelthPage`,`tenthPage`)"
             />
           </div>
           <div class="mask-body-div">
@@ -873,7 +873,7 @@
               src="./images/nervousUnlock.svg"
               class="complete-svg"
               alt="complete-img"
-              onclick="PageCount += 1; resetPillPosition(); if(PageCount>3){console.log(`completed`)} else{ showDiv(`thirteenPage`,`tenthPage`)}"
+              onclick="exploreMore(`thirteenPage`,`tenthPage`)"
             />
           </div>
           <div class="mask-body-div">
@@ -1106,6 +1106,15 @@
         console.log("Resetting pill to initial position:", initialPosition);
         movingDiv.style.left = `${initialPosition.left}%`;
         movingDiv.style.top = `${initialPosition.top}%`;
+      }
+      function exploreMore(first, second) {
+        PageCount += 1;
+        resetPillPosition();
+        if (PageCount > 3) {
+          console.log(`completed`);
+        } else {
+          showDiv(first, second);
+        }
       }
     </script>
   </body>
