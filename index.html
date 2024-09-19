@@ -890,9 +890,9 @@
         </div>
       </div>
 
-      <!-- ------ DIV NUMBER ----- 13 -->
+      <!-- ------ DIV NUMBER ----- 14 -->
 
-      <div id="" class="">
+      <div id="fourteenPage" class="hidden">
         <div class="be-plex-div"></div>
       </div>
     </div>
@@ -905,7 +905,7 @@
       ];
 
       // Function to show and hide divs
-      function showDiv(first, second, third) {
+      function showDiv(first, second) {
         document.getElementById(first).classList.add("hidden");
         document.getElementById(second).classList.remove("hidden");
       }
@@ -1124,7 +1124,7 @@
         PageCount += 1;
         resetPillPosition();
         if (PageCount >= 3) {
-          console.log(`completed`);
+          showDiv(first, `fourteenPage`);
         } else {
           showDiv(first, second);
         }
