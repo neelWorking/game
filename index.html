@@ -977,7 +977,7 @@
         currentIndex = (currentIndex + 1) % imagePaths.length;
         imgElement.src = imagePaths[currentIndex];
         if (currentIndex == imagePaths.length - 1) {
-          console.log("Image updated");
+          // console.log("Image updated");
           if (isFifthPageActive()) {
             setTimeout(() => {
               showDiv("fifthPage", "sixthPage");
@@ -1140,7 +1140,7 @@
 
       let initialPosition = { left: 45, top: 40 };
       function resetPillPosition() {
-        console.log("Resetting pill to initial position:", initialPosition);
+        // console.log("Resetting pill to initial position:", initialPosition);
         movingDiv.style.left = `${initialPosition.left}%`;
         movingDiv.style.top = `${initialPosition.top}%`;
       }
