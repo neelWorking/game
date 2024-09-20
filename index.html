@@ -884,13 +884,15 @@
               alt="human-mask"
               class="human-mask"
               loading="lazy"
-              onclick="showDiv('tenthPage','eleventhPage')"
+              id="humanMask"
+              onclick="showDiv('tenthPage','eleventhPage');document.getElementById('humanMask').classList.add('hidden'); "
             />
             <img
               src="./images/humanBrain.svg"
               alt="human-brain"
               class="human-brain"
               loading="lazy"
+              id="humanBrain"
               onclick="showDiv('tenthPage','twelthPage')"
             />
             <img
@@ -898,6 +900,7 @@
               alt="human-nervous"
               class="human-nervous"
               loading="lazy"
+              id="humanNervous"
               onclick="showDiv('tenthPage','thirteenPage')"
             />
             <!-- <img
@@ -944,6 +947,7 @@
               class="complete-svg"
               alt="complete-img"
               loading="lazy"
+              onclick="exploreMore(`eleventhPage`,`tenthPage`)"
             />
           </div>
           <div class="mask-body-div">
