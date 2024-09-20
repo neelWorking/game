@@ -1022,9 +1022,10 @@
       let offsetX, offsetY;
       let isDragging = false;
 
-      // Helper function to start dragging
+      // Use a flag to manage requestAnimationFrame
+      let animationFrameId = null;
+
       function startDrag(x, y) {
-        console.log("Drag started at:", { x, y });
         offsetX = x - movingDiv.offsetLeft;
         offsetY = y - movingDiv.offsetTop;
         isDragging = true;
@@ -1039,8 +1040,7 @@
         if (!isDragging) return;
         const x = e.clientX;
         const y = e.clientY;
-        console.log("Mouse moved to:", { x, y });
-        moveDiv(x, y);
+        scheduleMove(x, y);
       }
 
       function onTouchMove(e) {
@@ -1048,16 +1048,21 @@
         const touch = e.touches[0];
         const x = touch.clientX;
         const y = touch.clientY;
-        console.log("Touch moved to:", { x, y });
-        moveDiv(x, y);
+        scheduleMove(x, y);
+      }
+
+      // Use requestAnimationFrame to optimize the move action
+      function scheduleMove(x, y) {
+        if (animationFrameId) cancelAnimationFrame(animationFrameId);
+
+        animationFrameId = requestAnimationFrame(() => {
+          moveDiv(x, y);
+        });
       }
 
       function moveDiv(x, y) {
         const newX = x - offsetX;
         const newY = y - offsetY;
-
-        // Log new coordinates of the pill
-        console.log("Moving pill to:", { newX, newY });
 
         // Update the position of the pill
         movingDiv.style.left = `${newX}px`;
@@ -1068,15 +1073,15 @@
       }
 
       function onMouseUp() {
-        console.log("Mouse released");
         isDragging = false;
         cleanupListeners();
+        resetPillPosition();
       }
 
       function onTouchEnd() {
-        console.log("Touch released");
         isDragging = false;
         cleanupListeners();
+        resetPillPosition();
       }
 
       // Function to remove event listeners after drag ends
@@ -1085,6 +1090,7 @@
         document.removeEventListener("mouseup", onMouseUp);
         document.removeEventListener("touchmove", onTouchMove);
         document.removeEventListener("touchend", onTouchEnd);
+        if (animationFrameId) cancelAnimationFrame(animationFrameId); // Cleanup requestAnimationFrame
       }
 
       // Check if the moving div is within any of the target areas
@@ -1095,36 +1101,19 @@
         const targetRect2 = targetArea2.getBoundingClientRect();
         const targetRect3 = targetArea3.getBoundingClientRect();
 
-        console.log("Moving Div Area:", movingRect);
-
         // Check if the pill is inside any target and allow moving out
         if (isInsideTarget(movingRect, targetRect1)) {
-          console.log("Pill is inside target area 1");
-
           setTimeout(() => {
             showDiv("tenthPage", "eleventhPage");
           }, 100);
-
-          messageDiv.textContent = "You have reached target area 1!";
         } else if (isInsideTarget(movingRect, targetRect2)) {
-          console.log("Pill is inside target area 2");
-
           setTimeout(() => {
             showDiv("tenthPage", "twelthPage");
           }, 100);
-
-          messageDiv.textContent = "You have reached target area 2!";
         } else if (isInsideTarget(movingRect, targetRect3)) {
-          console.log("Pill is inside target area 3");
-
           setTimeout(() => {
             showDiv("tenthPage", "thirteenPage");
           }, 100);
-
-          messageDiv.textContent = "You have reached target area 3!";
-        } else {
-          //   console.log("Pill is outside all target areas");
-          // messageDiv.textContent = "Drag the glowing pill";
         }
       }
 
