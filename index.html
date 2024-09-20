@@ -863,7 +863,7 @@
 
       <!-- ------ DIV NUMBER ----- 10 -->
 
-      <div id="tenthPage" class="">
+      <div id="tenthPage" class="hidden">
         <div class="inside-human-div game-play-bg-div">
           <div class="person-center-div pill">
             <img
@@ -878,25 +878,27 @@
               id="game-area"
               class="game-play-preson"
               loading="lazy"
-              onclick="resetPillPosition()"
             />
             <img
               src="./images/humanMask.svg"
               alt="human-mask"
               class="human-mask"
               loading="lazy"
+              onclick="showDiv('tenthPage','eleventhPage')"
             />
             <img
               src="./images/humanBrain.svg"
               alt="human-brain"
               class="human-brain"
               loading="lazy"
+              onclick="showDiv('tenthPage','twelthPage')"
             />
             <img
               src="./images/humanNurvous.svg"
               alt="human-nervous"
               class="human-nervous"
               loading="lazy"
+              onclick="showDiv('tenthPage','thirteenPage')"
             />
             <!-- <img
               src="./images/pill.png"
@@ -1140,128 +1142,128 @@
       // Use a flag to manage requestAnimationFrame
       let animationFrameId = null;
 
-      function startDrag(x, y) {
-        offsetX = x - movingDiv.offsetLeft;
-        offsetY = y - movingDiv.offsetTop;
-        isDragging = true;
+      // function startDrag(x, y) {
+      //   offsetX = x - movingDiv.offsetLeft;
+      //   offsetY = y - movingDiv.offsetTop;
+      //   isDragging = true;
 
-        document.addEventListener("mousemove", onMouseMove);
-        document.addEventListener("mouseup", onMouseUp);
-        document.addEventListener("touchmove", onTouchMove);
-        document.addEventListener("touchend", onTouchEnd);
-      }
+      //   document.addEventListener("mousemove", onMouseMove);
+      //   document.addEventListener("mouseup", onMouseUp);
+      //   document.addEventListener("touchmove", onTouchMove);
+      //   document.addEventListener("touchend", onTouchEnd);
+      // }
 
-      function onMouseMove(e) {
-        if (!isDragging) return;
-        const x = e.clientX;
-        const y = e.clientY;
-        scheduleMove(x, y);
-      }
+      // function onMouseMove(e) {
+      //   if (!isDragging) return;
+      //   const x = e.clientX;
+      //   const y = e.clientY;
+      //   scheduleMove(x, y);
+      // }
 
-      function onTouchMove(e) {
-        if (!isDragging) return;
-        const touch = e.touches[0];
-        const x = touch.clientX;
-        const y = touch.clientY;
-        scheduleMove(x, y);
-      }
+      // function onTouchMove(e) {
+      //   if (!isDragging) return;
+      //   const touch = e.touches[0];
+      //   const x = touch.clientX;
+      //   const y = touch.clientY;
+      //   scheduleMove(x, y);
+      // }
 
       // Use requestAnimationFrame to optimize the move action
-      function scheduleMove(x, y) {
-        if (animationFrameId) cancelAnimationFrame(animationFrameId);
+      // function scheduleMove(x, y) {
+      //   if (animationFrameId) cancelAnimationFrame(animationFrameId);
 
-        animationFrameId = requestAnimationFrame(() => {
-          moveDiv(x, y);
-        });
-      }
+      //   animationFrameId = requestAnimationFrame(() => {
+      //     moveDiv(x, y);
+      //   });
+      // }
 
-      function moveDiv(x, y) {
-        const newX = x - offsetX;
-        const newY = y - offsetY;
+      // function moveDiv(x, y) {
+      //   const newX = x - offsetX;
+      //   const newY = y - offsetY;
 
-        // Update the position of the pill
-        movingDiv.style.left = `${newX}px`;
-        movingDiv.style.top = `${newY}px`;
+      //   // Update the position of the pill
+      //   movingDiv.style.left = `${newX}px`;
+      //   movingDiv.style.top = `${newY}px`;
 
-        // Check the current position of the moving div with respect to the target areas
-        checkPosition(newX, newY);
-      }
+      //   // Check the current position of the moving div with respect to the target areas
+      //   checkPosition(newX, newY);
+      // }
 
-      function onMouseUp() {
-        isDragging = false;
-        cleanupListeners();
-        resetPillPosition();
-      }
+      // function onMouseUp() {
+      //   isDragging = false;
+      //   cleanupListeners();
+      //   resetPillPosition();
+      // }
 
-      function onTouchEnd() {
-        isDragging = false;
-        cleanupListeners();
-        resetPillPosition();
-      }
+      // function onTouchEnd() {
+      //   isDragging = false;
+      //   cleanupListeners();
+      //   resetPillPosition();
+      // }
 
       // Function to remove event listeners after drag ends
-      function cleanupListeners() {
-        document.removeEventListener("mousemove", onMouseMove);
-        document.removeEventListener("mouseup", onMouseUp);
-        document.removeEventListener("touchmove", onTouchMove);
-        document.removeEventListener("touchend", onTouchEnd);
-        if (animationFrameId) cancelAnimationFrame(animationFrameId); // Cleanup requestAnimationFrame
-      }
+      // function cleanupListeners() {
+      //   document.removeEventListener("mousemove", onMouseMove);
+      //   document.removeEventListener("mouseup", onMouseUp);
+      //   document.removeEventListener("touchmove", onTouchMove);
+      //   document.removeEventListener("touchend", onTouchEnd);
+      //   if (animationFrameId) cancelAnimationFrame(animationFrameId); // Cleanup requestAnimationFrame
+      // }
 
       // Check if the moving div is within any of the target areas
-      function checkPosition(newX, newY) {
-        const movingRect = movingDiv.getBoundingClientRect();
+      // function checkPosition(newX, newY) {
+      //   const movingRect = movingDiv.getBoundingClientRect();
 
-        const targetRect1 = targetArea1.getBoundingClientRect();
-        const targetRect2 = targetArea2.getBoundingClientRect();
-        const targetRect3 = targetArea3.getBoundingClientRect();
+      //   const targetRect1 = targetArea1.getBoundingClientRect();
+      //   const targetRect2 = targetArea2.getBoundingClientRect();
+      //   const targetRect3 = targetArea3.getBoundingClientRect();
 
-        // Check if the pill is inside any target and allow moving out
-        if (isInsideTarget(movingRect, targetRect1)) {
-          setTimeout(() => {
-            showDiv("tenthPage", "eleventhPage");
-          }, 100);
-        } else if (isInsideTarget(movingRect, targetRect2)) {
-          setTimeout(() => {
-            showDiv("tenthPage", "twelthPage");
-          }, 100);
-        } else if (isInsideTarget(movingRect, targetRect3)) {
-          setTimeout(() => {
-            showDiv("tenthPage", "thirteenPage");
-          }, 100);
-        }
-      }
+      //   // Check if the pill is inside any target and allow moving out
+      //   if (isInsideTarget(movingRect, targetRect1)) {
+      //     setTimeout(() => {
+      //       showDiv("tenthPage", "eleventhPage");
+      //     }, 100);
+      //   } else if (isInsideTarget(movingRect, targetRect2)) {
+      //     setTimeout(() => {
+      //       showDiv("tenthPage", "twelthPage");
+      //     }, 100);
+      //   } else if (isInsideTarget(movingRect, targetRect3)) {
+      //     setTimeout(() => {
+      //       showDiv("tenthPage", "thirteenPage");
+      //     }, 100);
+      //   }
+      // }
 
       // Helper function to check if the moving div is inside a target area
-      function isInsideTarget(movingRect, targetRect, margin = 5) {
-        return (
-          movingRect.left >= targetRect.left + margin &&
-          movingRect.right <= targetRect.right - margin &&
-          movingRect.top >= targetRect.top + margin &&
-          movingRect.bottom <= targetRect.bottom - margin
-        );
-      }
+      // function isInsideTarget(movingRect, targetRect, margin = 5) {
+      //   return (
+      //     movingRect.left >= targetRect.left + margin &&
+      //     movingRect.right <= targetRect.right - margin &&
+      //     movingRect.top >= targetRect.top + margin &&
+      //     movingRect.bottom <= targetRect.bottom - margin
+      //   );
+      // }
 
       // Mouse events
-      movingDiv.addEventListener("mousedown", (e) => {
-        startDrag(e.clientX, e.clientY);
-      });
+      // movingDiv.addEventListener("mousedown", (e) => {
+      //   startDrag(e.clientX, e.clientY);
+      // });
 
       // Touch events for mobile
-      movingDiv.addEventListener("touchstart", (e) => {
-        const touch = e.touches[0];
-        startDrag(touch.clientX, touch.clientY);
-      });
+      // movingDiv.addEventListener("touchstart", (e) => {
+      //   const touch = e.touches[0];
+      //   startDrag(touch.clientX, touch.clientY);
+      // });
 
-      let initialPosition = { left: 45, top: 40 };
-      function resetPillPosition() {
-        // console.log("Resetting pill to initial position:", initialPosition);
-        movingDiv.style.left = `${initialPosition.left}%`;
-        movingDiv.style.top = `${initialPosition.top}%`;
-      }
+      // let initialPosition = { left: 45, top: 40 };
+      // function resetPillPosition() {
+      //   // console.log("Resetting pill to initial position:", initialPosition);
+      //   movingDiv.style.left = `${initialPosition.left}%`;
+      //   movingDiv.style.top = `${initialPosition.top}%`;
+      // }
       function exploreMore(first, second) {
         PageCount += 1;
-        resetPillPosition();
+        // resetPillPosition();
         if (PageCount >= 3) {
           showDiv(first, `fourteenPage`);
         } else {
