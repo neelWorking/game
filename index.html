@@ -264,6 +264,46 @@
         position: absolute;
         top: 40%;
       }
+      .human-brain {
+        z-index: 20;
+        height: 70px;
+        position: absolute;
+        top: 11.2%;
+        left: 45.2%;
+        filter: drop-shadow(
+          0px -4px 32px rgb(255, 65, 36)
+        ); /* Starting shadow */
+        animation: DropShadow 2s ease-in-out infinite; /* Apply the animation */
+      }
+      .human-mask {
+        z-index: 20;
+        position: absolute;
+        height: 125px;
+        top: 21.3%;
+        left: 33%;
+        filter: drop-shadow(1px 1px 20px yellow);
+        animation: DropShadow 2s ease-in-out infinite;
+      }
+      @keyframes DropShadow {
+        0% {
+          filter: drop-shadow(1px 1px 10px yellow); /* Initial state */
+        }
+        50% {
+          filter: drop-shadow(1px 1px 30px black); /* Grow the shadow */
+        }
+        100% {
+          filter: drop-shadow(1px 1px 10px yellow); /* Back to initial */
+        }
+      }
+      .human-nervous {
+        z-index: 20;
+        width: 122px;
+        position: absolute;
+        top: 23%;
+        right: 30%;
+        filter: drop-shadow(0px -4px 32px rgb(238, 230, 0));
+        animation: DropShadow 2s ease-in-out infinite;
+      }
       .div-size {
         border: 3px solid red;
       }
@@ -823,7 +863,7 @@
 
       <!-- ------ DIV NUMBER ----- 10 -->
 
-      <div id="tenthPage" class="hidden">
+      <div id="tenthPage" class="">
         <div class="inside-human-div game-play-bg-div">
           <div class="person-center-div pill">
             <img
@@ -833,7 +873,7 @@
               loading="lazy"
             />
             <img
-              src="./images/organBodyWihtoutPill.png"
+              src="./images/plainBody.png"
               alt="game-body"
               id="game-area"
               class="game-play-preson"
@@ -841,15 +881,31 @@
               onclick="resetPillPosition()"
             />
             <img
+              src="./images/humanMask.svg"
+              alt="human-mask"
+              class="human-mask"
+              loading="lazy"
+            />
+            <img
+              src="./images/humanBrain.svg"
+              alt="human-brain"
+              class="human-brain"
+              loading="lazy"
+            />
+            <img
+              src="./images/humanNurvous.svg"
+              alt="human-nervous"
+              class="human-nervous"
+              loading="lazy"
+            />
+            <!-- <img
               src="./images/pill.png"
               alt="glowing-pill"
               id="moving-div"
               class="dragging-pill"
               loading="lazy"
-            />
-            <p class="tap-to-continue">
-              Drag the pill to highlighted body parts
-            </p>
+            /> -->
+            <p class="tap-to-continue">Click on highlighted body parts</p>
           </div>
           <div id="target-area-1"></div>
           <div id="target-area-2"></div>
