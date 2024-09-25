@@ -107,7 +107,6 @@
         opacity: 0;
         animation: fade 1.5s infinite;
       }
-
       @keyframes fade {
         0%,
         100% {
@@ -266,6 +265,7 @@
       }
       .human-brain {
         z-index: 20;
+        height: 70px;
         position: absolute;
         top: 11.2%;
         left: 45.2%;
@@ -277,6 +277,7 @@
       .human-mask {
         z-index: 20;
         position: absolute;
+        height: 125px;
         top: 21.3%;
         left: 33%;
         filter: drop-shadow(1px 1px 20px yellow);
@@ -295,6 +296,7 @@
       }
       .human-nervous {
         z-index: 20;
+        width: 122px;
         position: absolute;
         top: 23%;
         right: 30%;
@@ -614,7 +616,6 @@
           left: calc(0px);
         }
       }
-
       @keyframes moveFromRight {
         0% {
           right: -200px;
@@ -830,7 +831,7 @@
 
       <!-- ------ DIV NUMBER ----- 10 -->
 
-      <div id="tenthPage" class="">
+      <div id="tenthPage" class="hidden">
         <div class="inside-human-div game-play-bg-div">
           <div class="person-center-div pill">
             <img
@@ -844,47 +845,41 @@
               id="game-area"
               class="game-play-preson"
             />
-            <div
+            <img
+              src="./images/humanMask.svg"
+              alt="human-mask"
               class="human-mask"
+              loading="lazy"
+              id="humanMask"
               onclick="showDiv('tenthPage','eleventhPage');document.getElementById('humanMask').classList.add('hidden'); "
-            >
-              <img
-                style="height: 125px"
-                src="./images/humanMask.svg"
-                alt="human-mask"
-                id="humanMask"
-              />
-            </div>
-            <div
+            />
+            <img
+              src="./images/humanBrain.svg"
+              alt="human-brain"
               class="human-brain"
+              loading="lazy"
+              id="humanBrain"
               onclick="showDiv('tenthPage','twelthPage');document.getElementById('humanBrain').classList.add('hidden');"
-            >
-              <img
-                style="height: 70px"
-                src="./images/humanBrain.svg"
-                alt="human-brain"
-                id="humanBrain"
-              />
-            </div>
-            <div
+            />
+            <img
+              src="./images/humanNurvous.svg"
+              alt="human-nervous"
               class="human-nervous"
+              id="humanNervous"
               onclick="showDiv('tenthPage','thirteenPage');document.getElementById('humanNervous').classList.add('hidden');"
-            >
-              <img
-                src="./images/humanNurvous.svg"
-                alt="human-nervous"
-                style="width: 122px"
-                id="humanNervous"
-              />
-            </div>
+            />
             <!-- <img
               src="./images/pill.png"
               alt="glowing-pill"
               id="moving-div"
               class="dragging-pill"
-
+              loading="lazy"
             /> -->
+            <p class="tap-to-continue">Click on highlighted body parts</p>
           </div>
+          <!-- <div id="target-area-1"></div>
+          <div id="target-area-2"></div>
+          <div id="target-area-3"></div> -->
         </div>
       </div>
 
